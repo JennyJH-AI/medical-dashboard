@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard - Jenny M. Hutto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Medical Dashboard</h1>
+            <div class="patient-info">
+                <span>Patient: Jenny M. Hutto</span>
+                <span>DOB: 09/22/1992</span>
+                <span id="last-updated">Last Updated: Loading...</span>
+            </div>
+        </header>
+
+        <!-- Critical Alerts -->
+        <div class="alert-box" id="alerts">
+            <h2>⚠️ Critical Findings</h2>
+            <div class="alert-grid">
+                <div class="alert-item">
+                    <span class="label">Disease Duration</span>
+                    <span class="value">6+ Years</span>
+                </div>
+                <div class="alert-item">
+                    <span class="label">ANA Progression</span>
+                    <span class="value" id="ana-current">Loading...</span>
+                </div>
+                <div class="alert-item">
+                    <span class="label">Lowest SpO2</span>
+                    <span class="value" id="lowest-spo2">Loading...</span>
+                </div>
+                <div class="alert-item">
+                    <span class="label">Autonomic Dysfunction</span>
+                    <span class="value" id="autonomic-status">Documented</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-button active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-button" onclick="showTab('labs')">Laboratory</button>
+            <button class="tab-button" onclick="showTab('oxygen')">O2/HR Analysis</button>
+            <button class="tab-button" onclick="showTab('timeline')">Timeline</button>
+            <button class="tab-button" onclick="showTab('neuro')">Neurological</button>
+            <button class="tab-button" onclick="showTab('tests')">Diagnostic Tests</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-pane active">
+                <div class="overview-grid">
+                    <div class="card">
+                        <h3>Current Status</h3>
+                        <div id="current-status">
+                            <p>Loading current status...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Key Medications</h3>
+                        <div id="medications-list">
+                            <p>Loading medications...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Recent Events</h3>
+                        <div id="recent-events">
+                            <p>Loading recent events...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laboratory Tab -->
+            <div id="labs" class="tab-pane">
+                <div class="lab-grid">
+                    <div class="card">
+                        <h3>Current Laboratory Values</h3>
+                        <table class="lab-table">
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Value</th>
+                                    <th>Reference</th>
+                                    <th>Date</th>
+                                    <th>Trend</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lab-values">
+                                <tr><td colspan="5">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>ANA Progression</h3>
+                        <canvas id="ana-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oxygen Analysis Tab -->
+            <div id="oxygen" class="tab-pane">
+                <div class="oxygen-grid">
+                    <div class="card">
+                        <h3>Current Period Summary</h3>
+                        <div id="o2-summary">
+                            <p>Loading O2 data...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Autonomic Response Pattern</h3>
+                        <canvas id="autonomic-chart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3>Severity Progression</h3>
+                        <canvas id="severity-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Tab -->
+            <div id="timeline" class="tab-pane">
+                <div class="timeline-container">
+                    <div class="card">
+                        <h3>Disease Timeline</h3>
+                        <div id="disease-timeline" class="timeline">
+                            <p>Loading timeline...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Recent Critical Events (May-July 2025)</h3>
+                        <div id="recent-timeline" class="timeline">
+                            <p>Loading recent events...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neurological Tab -->
+            <div id="neuro" class="tab-pane">
+                <div class="neuro-grid">
+                    <div class="card">
+                        <h3>Documented Neurological Events</h3>
+                        <table class="event-table">
+                            <thead>
+                                <tr>
+                                    <th>Date/Time</th>
+                                    <th>Type</th>
+                                    <th>Duration</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="neuro-events">
+                                <tr><td colspan="4">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>Cranial Nerve Involvement</h3>
+                        <div id="cranial-nerves" class="nerve-diagram">
+                            <!-- This will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnostic Tests Tab -->
+            <div id="tests" class="tab-pane">
+                <div class="tests-grid">
+                    <div class="card">
+                        <h3>Imaging Studies</h3>
+                        <div id="imaging-studies">
+                            <p>Loading imaging results...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Specialized Testing</h3>
+                        <div id="specialized-tests">
+                            <p>Loading test results...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>This dashboard contains protected health information. Access limited to authorized healthcare providers.</p>
+            <p>For questions or updates, contact: [Your contact info]</p>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

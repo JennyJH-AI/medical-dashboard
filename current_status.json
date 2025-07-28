@@ -1,0 +1,22 @@
+{
+    "lastUpdated": "July 26, 2025",
+    "primaryDiagnosis": "Post-Infectious Encephalitis",
+    "diseaseDuration": "6 years (onset November 2019)",
+    "functionalStatus": "Requires home oxygen therapy, limited daily activities",
+    "currentManagement": "Multidisciplinary care with neurology, immunology",
+    "currentANA": "1:640",
+    "recentEvents": [
+        {
+            "date": "July 31, 2025",
+            "description": "U of U Movement Disorder Neurology scheduled"
+        },
+        {
+            "date": "July 7, 2025",
+            "description": "Liver ultrasound - new portal vein findings"
+        },
+        {
+            "date": "June 29, 2025",
+            "description": "Lowest recorded SpO2: 28%"
+        }
+    ]
+}
